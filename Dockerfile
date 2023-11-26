@@ -21,11 +21,11 @@ COPY requirements.txt ./
 COPY ./docs/gradio-3.32.6-py3-none-any.whl ./docs/gradio-3.32.6-py3-none-any.whl
 RUN pip3 install -r requirements.txt
 
-
 # 装载项目文件，安装剩余依赖（必要）
 COPY . .
 RUN pip3 install -r requirements.txt
 
+EXPOSE 47777
 
 # 非必要步骤，用于预热模块（可以删除）
 RUN python3  -c 'from check_proxy import warm_up_modules; warm_up_modules()'
